@@ -1,37 +1,36 @@
-package org.firstinspires.ftc.teamcode.opmodes.testing.OldTesting;
+package org.firstinspires.ftc.teamcode.opmodes.testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.mechanisms.RobotNameChassis;
-import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.RadahnTransfer.RadahnServoIntakeSystem;
+import org.firstinspires.ftc.teamcode.mechanisms.RobotNameChooChoo.RobotChooChooMotorSystem;
 
 @TeleOp
-public class IntakeTestingRadahn extends LinearOpMode {
+public class ChooChooTesting extends LinearOpMode {
     RobotNameChassis chassis;
-    RadahnServoIntakeSystem intakeSystem;
+    RobotChooChooMotorSystem chooChooMotorSystem;
+
     public ElapsedTime runtime = new ElapsedTime();
     double previousTime = 0;
     @Override
     public void runOpMode() throws InterruptedException {
         chassis = new RobotNameChassis(gamepad1, telemetry, hardwareMap);
+        chooChooMotorSystem = new RobotChooChooMotorSystem(gamepad1, telemetry, hardwareMap);
 
-        intakeSystem = new RadahnServoIntakeSystem(gamepad1, hardwareMap);
+        telemetry.addLine("Waiting For Start");
+        telemetry.update();
 
-        while (opModeInInit()){
-            telemetry.addLine("Waiting For Start");
-            telemetry.update();
-        }
+        waitForStart();
 
         while (opModeIsActive()){
             chassis.robotCentricDrive();
             chassis.updatePose();
 
-            intakeSystem.controllerInput();
-            intakeSystem.setPositions();
+            chooChooMotorSystem.controllerInput();
+            chooChooMotorSystem.setPositions();
 
-//            telemetry.addData("Pose Estimate", chassis.getPose());
             telemetry.addData("loop time", runtime.seconds()-previousTime);
             telemetry.update();
 

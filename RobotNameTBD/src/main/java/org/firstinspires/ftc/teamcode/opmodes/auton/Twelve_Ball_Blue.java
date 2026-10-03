@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.baseCode.hardware.claws.SingleServoClaw;
 import org.firstinspires.ftc.baseCode.math.Vector3D;
-import org.firstinspires.ftc.teamcode.mechanisms.RadahnChassis;
+import org.firstinspires.ftc.teamcode.mechanisms.RobotNameChassis;
 import org.firstinspires.ftc.teamcode.mechanisms.RadahnColorSensor;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.RadahnTransfer.RadahnGate;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.RadahnHoodedOuttakeSystem;
@@ -49,7 +49,7 @@ public class Twelve_Ball_Blue extends LinearOpMode {
         PARK
     }
 
-    RadahnChassis chassis;
+    RobotNameChassis chassis;
     RadahnMotorIntakeSystem intake;
     RadahnHoodedOuttakeSystem hoodedOuttakeSystem;
     RadahnTurretSystem turret;
@@ -75,7 +75,7 @@ public class Twelve_Ball_Blue extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
+        chassis = new RobotNameChassis(gamepad1, telemetry, hardwareMap);
         intake = new RadahnMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
         hoodedOuttakeSystem = new RadahnHoodedOuttakeSystem(gamepad1, telemetry, hardwareMap);
         turret = new RadahnTurretSystem(gamepad1, telemetry, hardwareMap);

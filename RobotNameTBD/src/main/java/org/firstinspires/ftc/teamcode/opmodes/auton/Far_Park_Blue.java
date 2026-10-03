@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.baseCode.math.Vector3D;
-import org.firstinspires.ftc.teamcode.mechanisms.RadahnChassis;
+import org.firstinspires.ftc.teamcode.mechanisms.RobotNameChassis;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.RadahnHoodedOuttake;
 import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.MotorIntakeStates;
 import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.RadahnMotorIntakeSystem;
@@ -23,7 +23,7 @@ public class Far_Park_Blue extends LinearOpMode {
 
 
 
-    RadahnChassis chassis;
+    RobotNameChassis chassis;
     RadahnMotorIntakeSystem intake;
     RadahnMotorOuttakeSystem simpleOuttake;
     //RadahnPusher pusher;
@@ -38,7 +38,7 @@ public class Far_Park_Blue extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
+        chassis = new RobotNameChassis(gamepad1, telemetry, hardwareMap);
         intake = new RadahnMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
         simpleOuttake = new RadahnMotorOuttakeSystem(gamepad1, telemetry, hardwareMap);
         hoodedServo = new RadahnHoodedOuttake(gamepad1, telemetry, hardwareMap);

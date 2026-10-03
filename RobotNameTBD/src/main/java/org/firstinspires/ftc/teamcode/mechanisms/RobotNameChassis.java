@@ -9,7 +9,7 @@ import org.firstinspires.ftc.baseCode.sensors.imu;
 import org.firstinspires.ftc.baseCode.sensors.odometry.OdometryType;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class RadahnChassis extends MecanumChassis {
+public class RobotNameChassis extends MecanumChassis {
 
     double CPR = 8192 ;
     double wheelDia = 1.36;
@@ -20,7 +20,7 @@ public class RadahnChassis extends MecanumChassis {
     public PID_Controller TranslationalPID_Y;
     public PID_Controller HeadingPID;
 
-    public RadahnChassis(Gamepad gamepad1, Telemetry telemetry, HardwareMap hardwareMap){
+    public RobotNameChassis(Gamepad gamepad1, Telemetry telemetry, HardwareMap hardwareMap){
         super(new String[]{"fLeft", "fRight", "bRight", "bLeft"}, gamepad1, telemetry, hardwareMap);
 
         setOdometry(new String[]{"fLeft", "fRight", "bRight"}, OdometryType.THREE_WHEEL,

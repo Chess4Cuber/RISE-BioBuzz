@@ -4,18 +4,18 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.baseCode.math.Vector3D;
-import org.firstinspires.ftc.teamcode.mechanisms.RadahnChassis;
+import org.firstinspires.ftc.teamcode.mechanisms.RobotNameChassis;
 
 
 @Autonomous
 public class PID_PointFollowerTest extends LinearOpMode {
 
-    RadahnChassis chassis;
+    RobotNameChassis chassis;
     Vector3D point = new Vector3D(0, 0, 35);
 
     @Override
     public void runOpMode() throws InterruptedException {
-        chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
+        chassis = new RobotNameChassis(gamepad1, telemetry, hardwareMap);
 
         waitForStart();
 

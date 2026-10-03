@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.mechanisms.RadahnChassis;
+import org.firstinspires.ftc.teamcode.mechanisms.RobotNameChassis;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.RadahnTransfer.RadahnGate;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.RadahnHoodedOuttake;
 import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.RadahnMotorIntakeSystem;
@@ -18,7 +18,7 @@ public class RadahnSimpleTeleOp extends LinearOpMode {
     RadahnHoodedOuttake hood;
     RadahnMotorOuttakeSystem simpleOuttake;
     RadahnTurretSystemManual turret;
-    RadahnChassis chassis;
+    RobotNameChassis chassis;
     RadahnMotorIntakeSystem intake;
     RadahnGate pusher;
 
@@ -33,7 +33,7 @@ public class RadahnSimpleTeleOp extends LinearOpMode {
 
         hood = new RadahnHoodedOuttake(gamepad1, telemetry, hardwareMap);
         simpleOuttake = new RadahnMotorOuttakeSystem(gamepad1, telemetry, hardwareMap);
-        chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
+        chassis = new RobotNameChassis(gamepad1, telemetry, hardwareMap);
         intake = new RadahnMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
         pusher = new RadahnGate(gamepad1, hardwareMap);
         turret = new RadahnTurretSystemManual(gamepad1, telemetry, hardwareMap);
