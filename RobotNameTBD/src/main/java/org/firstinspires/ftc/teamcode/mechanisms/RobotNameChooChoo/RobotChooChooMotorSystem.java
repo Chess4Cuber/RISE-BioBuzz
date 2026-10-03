@@ -9,7 +9,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class RobotChooChooMotorSystem {
     Gamepad gamepad1;
     Telemetry telemetry;
-    RobotChooChooMotor rotator;
+    RobotChooChooMotor chooChooMotor;
 
     boolean lastToggleB = false;
     boolean lastToggleRightBumper = false;
@@ -20,7 +20,7 @@ public class RobotChooChooMotorSystem {
     public double nudgeDegrees = 10;
 
     public RobotChooChooMotorSystem(Gamepad gamepad1, Telemetry telemetry, HardwareMap hardwareMap){
-        rotator = new RobotChooChooMotor(gamepad1, telemetry, hardwareMap);
+        chooChooMotor = new RobotChooChooMotor(gamepad1, telemetry, hardwareMap);
 
         chooChooState = ChooChooStates.RESTING;
         this.gamepad1 = gamepad1;
@@ -30,15 +30,15 @@ public class RobotChooChooMotorSystem {
     public void setPositions(){
         switch (chooChooState){
             case RESTING:
-                rotator.setPosition(targetDegrees);
+                chooChooMotor.setPosition(targetDegrees);
                 break;
 
             case AUTO:
-                rotator.setPosition(targetDegrees);
+                chooChooMotor.setPosition(targetDegrees);
                 break;
 
             case MANUAL:
-                rotator.setPosition(targetDegrees);
+                chooChooMotor.setPosition(targetDegrees);
                 break;
         }
     }
@@ -61,7 +61,7 @@ public class RobotChooChooMotorSystem {
                 break;
 
             case AUTO:
-                if (Math.abs(targetDegrees - rotator.getPositionDegrees()) < rotator.toleranceDegrees) {
+                if (Math.abs(targetDegrees - chooChooMotor.getPositionDegrees()) < chooChooMotor.toleranceDegrees) {
                     chooChooState = ChooChooStates.RESTING;
                 }
                 break;
@@ -78,7 +78,7 @@ public class RobotChooChooMotorSystem {
                 if ((gamepad1.b != lastToggleB) && gamepad1.b) {
                     startFullRotation();
                 }
-                else if (Math.abs(targetDegrees - rotator.getPositionDegrees()) < rotator.toleranceDegrees) {
+                else if (Math.abs(targetDegrees - chooChooMotor.getPositionDegrees()) < chooChooMotor.toleranceDegrees) {
                     chooChooState = ChooChooStates.RESTING;
                 }
                 break;
@@ -90,7 +90,7 @@ public class RobotChooChooMotorSystem {
     }
 
     public void startFullRotation(){
-        targetDegrees = rotator.getPositionDegrees() + 360;
+        targetDegrees = chooChooMotor.getPositionDegrees() + 360;
         chooChooState = ChooChooStates.AUTO;
     }
 
@@ -100,8 +100,8 @@ public class RobotChooChooMotorSystem {
 
     public void setTelemetry(){
         telemetry.addData("Rotator State", chooChooState);
-        telemetry.addData("Rotator Degrees", rotator.getPositionDegrees());
+        telemetry.addData("Rotator Degrees", chooChooMotor.getPositionDegrees());
         telemetry.addData("Rotator Target", targetDegrees);
-        telemetry.addData("Rotator Encoder", rotator.motors[0].getCurrPosTicks());
+        telemetry.addData("Rotator Encoder", chooChooMotor.motors[0].getCurrPosTicks());
     }
 }
