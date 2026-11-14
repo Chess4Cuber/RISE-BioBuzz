@@ -29,15 +29,15 @@ public class RadahnMotorOuttakeSystem {
                 break;
 
             case INTAKING:
-                outtake.setPower(.8);
+                outtake.setPower(1);
                 break;
 
             case OUTTAKING:
-                outtake.setPower(-.8);
+                outtake.setPower(-1);
                 break;
 
             case FAR_SHOT:
-                outtake.setPower(.6);
+                outtake.setPower(1.0);
                 break;
         }
 

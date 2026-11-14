@@ -32,7 +32,7 @@ public class RadahnHoodedOuttake extends PassiveIntake {
 
         for (int i = 0; i < flywheelPID.length; i++) {
 
-            flywheelPID[i] = new PID_Controller(0.0006, 0.00012, 0.7, 0.00001);
+            flywheelPID[i] = new PID_Controller(0.0006, 0.00015, 0.7, 0.00001);
 
             // RPM tolerance before integral windup is reset
             flywheelPID[i].tolerance = 40;

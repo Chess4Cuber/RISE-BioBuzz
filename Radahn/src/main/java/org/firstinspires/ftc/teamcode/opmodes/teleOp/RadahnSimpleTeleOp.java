@@ -41,7 +41,7 @@ public class RadahnSimpleTeleOp extends LinearOpMode {
 
         while (opModeInInit()) {
             pusher.openClaw();
-            hood.setHoodPosition(-.3);
+            hood.setHoodPosition(0);
 
             telemetry.addLine("Waiting For Start");
             telemetry.update();

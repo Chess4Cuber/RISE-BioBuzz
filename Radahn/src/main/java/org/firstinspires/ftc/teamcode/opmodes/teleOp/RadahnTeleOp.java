@@ -105,10 +105,9 @@ public class RadahnTeleOp extends LinearOpMode {
                         Math.tan(tyRadians - CAMERA_ANGLE);
             }
 
-            hoodedOuttakeSystem.updateDistance(20, true);
+            hoodedOuttakeSystem.updateDistance(24.1, true);
             hoodedOuttakeSystem.update();
 
-            hoodedOuttakeSystem.hoodedOuttake.setHoodPosition(.4);
 
             intake.controllerInput();
             intake.setPositions();

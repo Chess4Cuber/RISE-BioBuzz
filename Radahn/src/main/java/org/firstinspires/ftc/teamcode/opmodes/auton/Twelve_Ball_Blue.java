@@ -169,7 +169,7 @@ public class Twelve_Ball_Blue extends LinearOpMode {
                 break;
 
             case FIRST_LINE:
-                targetPose.set(15.63, -57.45, 0);   // updated from Red
+                targetPose.set(15.63, -61.45, 0);   // updated from Red
 
                 if(targetPose.findDistance(poseVector) < tolerance){
                     parkingStep = AutoStep.FIRST_LINE2;
@@ -178,7 +178,7 @@ public class Twelve_Ball_Blue extends LinearOpMode {
                 break;
 
             case FIRST_LINE2:
-                targetPose.set(-14.26, -57.45, 0);  // updated from Red
+                targetPose.set(-14.26, -61.45, 0);  // updated from Red
 
                 if(targetPose.findDistance(poseVector) < tolerance){
                     parkingStep = AutoStep.BACK_FIRST1;
@@ -187,7 +187,7 @@ public class Twelve_Ball_Blue extends LinearOpMode {
                 break;
 
             case BACK_FIRST1:
-                targetPose.set(10.63, -60.45, 0);
+                targetPose.set(10.63, -61.45, 0);
 
                 if(targetPose.findDistance(poseVector) < tolerance){
                     parkingStep = AutoStep.BACK_FIRST2;
