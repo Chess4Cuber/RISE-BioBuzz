@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.RadahnTransfer.
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.RadahnHoodedOuttakeSystem;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.TurretHoodStates;
 import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.MotorIntakeStates;
-import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.RadahnMotorIntakeSystem;
+import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.NaviMotorIntakeSystem;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.turretSystem.RadahnTurretSystem;
 
 @Autonomous
@@ -50,7 +50,7 @@ public class Twelve_Ball_Red extends LinearOpMode {
     }
 
     RadahnChassis chassis;
-    RadahnMotorIntakeSystem intake;
+    NaviMotorIntakeSystem intake;
     RadahnHoodedOuttakeSystem hoodedOuttakeSystem;
     RadahnTurretSystem turret;
     RadahnGate gate;
@@ -76,7 +76,7 @@ public class Twelve_Ball_Red extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
-        intake = new RadahnMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
+        intake = new NaviMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
         hoodedOuttakeSystem = new RadahnHoodedOuttakeSystem(gamepad1, telemetry, hardwareMap);
         turret = new RadahnTurretSystem(gamepad1, telemetry, hardwareMap);
         gate = new RadahnGate(gamepad1, hardwareMap);

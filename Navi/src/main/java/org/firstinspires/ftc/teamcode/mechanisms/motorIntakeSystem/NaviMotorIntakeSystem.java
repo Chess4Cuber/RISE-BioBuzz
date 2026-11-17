@@ -5,17 +5,17 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class RadahnMotorIntakeSystem {
+public class NaviMotorIntakeSystem {
     Gamepad gamepad1;
     Telemetry telemetry;
     boolean lastToggleUp = false;
     boolean lastToggleA = false;
-    RadahnMotorIntake intake;
+    NaviMotorIntake intake;
     public MotorIntakeStates intakeState;
 
-    public RadahnMotorIntakeSystem(Gamepad gamepad1, Telemetry telemetry, HardwareMap hardwareMap) {
+    public NaviMotorIntakeSystem(Gamepad gamepad1, Telemetry telemetry, HardwareMap hardwareMap) {
 
-        intake = new RadahnMotorIntake(gamepad1, telemetry, hardwareMap);
+        intake = new NaviMotorIntake(gamepad1, telemetry, hardwareMap);
 
         this.gamepad1 = gamepad1;
         this.telemetry = telemetry;

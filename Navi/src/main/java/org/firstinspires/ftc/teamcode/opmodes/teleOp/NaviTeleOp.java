@@ -8,19 +8,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.mechanisms.RadahnChassis;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.RadahnTransfer.RadahnGate;
-import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.RadahnHoodedOuttake;
-import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.RadahnMotorIntakeSystem;
-import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.simpleMotorOuttakeSystem.RadahnMotorOuttakeSystem;
-import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.turretManual.RadahnTurretSystemManual;
+import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.NaviMotorIntakeSystem;
 
 @TeleOp
-public class RadahnSimpleTeleOp extends LinearOpMode {
-    RadahnHoodedOuttake hood;
-    RadahnMotorOuttakeSystem simpleOuttake;
-    RadahnTurretSystemManual turret;
+public class NaviTeleOp extends LinearOpMode {
     RadahnChassis chassis;
-    RadahnMotorIntakeSystem intake;
-    RadahnGate pusher;
+    NaviMotorIntakeSystem intake;
 
     public ElapsedTime runtime = new ElapsedTime();
     double previousTime = 0;
@@ -31,17 +24,11 @@ public class RadahnSimpleTeleOp extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        hood = new RadahnHoodedOuttake(gamepad1, telemetry, hardwareMap);
-        simpleOuttake = new RadahnMotorOuttakeSystem(gamepad1, telemetry, hardwareMap);
         chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
-        intake = new RadahnMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
-        pusher = new RadahnGate(gamepad1, hardwareMap);
-        turret = new RadahnTurretSystemManual(gamepad1, telemetry, hardwareMap);
+        intake = new NaviMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
 
 
         while (opModeInInit()) {
-            pusher.openClaw();
-            hood.setHoodPosition(0);
 
             telemetry.addLine("Waiting For Start");
             telemetry.update();
@@ -52,16 +39,8 @@ public class RadahnSimpleTeleOp extends LinearOpMode {
             chassis.robotCentricDrive();
             chassis.updatePose();
 
-            simpleOuttake.controllerInput();
-            simpleOuttake.setPositions();
-
             intake.controllerInput();
             intake.setPositions();
-
-            turret.controllerInput();
-            turret.setPositions();
-
-            pusher.toggleClaw();
 
             telemetry.addData("Loop Time", runtime.seconds() - previousTime);
             telemetry.update();

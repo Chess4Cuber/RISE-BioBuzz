@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.mechanisms.RadahnChassis;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.RadahnTransfer.RadahnGate;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.RadahnHoodedOuttake;
 import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.MotorIntakeStates;
-import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.RadahnMotorIntakeSystem;
+import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.NaviMotorIntakeSystem;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.simpleMotorOuttakeSystem.MotorOuttakeStates;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.simpleMotorOuttakeSystem.RadahnMotorOuttakeSystem;
 
@@ -52,7 +52,7 @@ public class Twelve_Ball_Blue_Quals extends LinearOpMode {
     PusherState pusherState;
 
     RadahnChassis chassis;
-    RadahnMotorIntakeSystem intake;
+    NaviMotorIntakeSystem intake;
     RadahnMotorOuttakeSystem simpleOuttake;
     RadahnGate pusher;
     RadahnHoodedOuttake hoodedServo;
@@ -67,7 +67,7 @@ public class Twelve_Ball_Blue_Quals extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
-        intake = new RadahnMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
+        intake = new NaviMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
         simpleOuttake = new RadahnMotorOuttakeSystem(gamepad1, telemetry, hardwareMap);
         pusher = new RadahnGate(gamepad1, hardwareMap);
         hoodedServo = new RadahnHoodedOuttake(gamepad1, telemetry, hardwareMap);

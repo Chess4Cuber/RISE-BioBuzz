@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.mechanisms.RadahnColorSensor;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.RadahnTransfer.RadahnGate;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.RadahnHoodedOuttakeSystem;
 import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.MotorIntakeStates;
-import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.RadahnMotorIntakeSystem;
+import org.firstinspires.ftc.teamcode.mechanisms.motorIntakeSystem.NaviMotorIntakeSystem;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.turretSystem.RadahnTurretSystem;
 import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.flywheelHoodSystem.TurretHoodStates;
 
@@ -42,7 +42,7 @@ public class Nine_Ball_Red_FAR extends LinearOpMode {
     }
 
     RadahnChassis chassis;
-    RadahnMotorIntakeSystem intake;
+    NaviMotorIntakeSystem intake;
     RadahnHoodedOuttakeSystem hoodedOuttakeSystem;
     RadahnTurretSystem turret;
     RadahnGate gate;
@@ -68,7 +68,7 @@ public class Nine_Ball_Red_FAR extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
-        intake = new RadahnMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
+        intake = new NaviMotorIntakeSystem(gamepad1, telemetry, hardwareMap);
         hoodedOuttakeSystem = new RadahnHoodedOuttakeSystem(gamepad1, telemetry, hardwareMap);
         turret = new RadahnTurretSystem(gamepad1, telemetry, hardwareMap);
         gate = new RadahnGate(gamepad1, hardwareMap);

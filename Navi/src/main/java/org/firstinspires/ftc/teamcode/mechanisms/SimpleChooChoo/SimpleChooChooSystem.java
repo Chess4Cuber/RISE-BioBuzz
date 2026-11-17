@@ -30,11 +30,11 @@ public class SimpleChooChooSystem {
                 break;
 
             case INTAKING:
-                intake.setPower(1);
+                intake.setPower(.8);
                 break;
 
             case OUTTAKING:
-                intake.setPower(-1);
+                intake.setPower(-.8);
                 break;
         }
     }
