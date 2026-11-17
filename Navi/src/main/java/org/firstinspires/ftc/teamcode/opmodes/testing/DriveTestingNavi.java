@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.mechanisms.RadahnChassis;
 
 @TeleOp
-public class DriveTestingRadahn extends LinearOpMode {
+public class DriveTestingNavi extends LinearOpMode {
     RadahnChassis chassis;
     public ElapsedTime runtime = new ElapsedTime();
     double previousTime = 0;
