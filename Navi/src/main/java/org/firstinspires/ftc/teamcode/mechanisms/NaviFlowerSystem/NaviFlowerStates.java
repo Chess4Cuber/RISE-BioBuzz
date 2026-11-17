@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.mechanisms.NaviFlowerSystem;
 
-public enum FlowerStages {
+public enum NaviFlowerStates {
     EXTENDED,
     RETRACTED,
     INITIALIZED
