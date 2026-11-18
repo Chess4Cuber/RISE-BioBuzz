@@ -9,7 +9,7 @@ public class NaviGate extends SingleServoClaw {
     Gamepad gamepad1;
     boolean lastToggleY = false;
     public NaviGate(Gamepad gamepad1, HardwareMap hardwareMap){
-        super("pusher", 0, .45, hardwareMap);
+        super("gate", 0, .45, hardwareMap);
 
         this.gamepad1 = gamepad1;
     }

@@ -1,39 +1,45 @@
 package org.firstinspires.ftc.teamcode.opmodes.testing;
 
+import com.acmerobotics.dashboard.FtcDashboard;
+import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.mechanisms.RadahnChassis;
-import org.firstinspires.ftc.teamcode.mechanisms.SimpleChooChoo.SimpleChooChooSystem;
-import org.firstinspires.ftc.teamcode.mechanisms.otherMechanisms.RadahnTransfer.RadahnServoIntakeSystem;
+import org.firstinspires.ftc.teamcode.mechanisms.NaviChooChooSystem.NaviChooChooSystem;
 
 @TeleOp
 public class ChooChooTesting extends LinearOpMode {
-    //RadahnChassis chassis;
-    SimpleChooChooSystem chooChoo;
+
+    NaviChooChooSystem chooChoo;
+
     public ElapsedTime runtime = new ElapsedTime();
     double previousTime = 0;
+
     @Override
     public void runOpMode() throws InterruptedException {
-        //chassis = new RadahnChassis(gamepad1, telemetry, hardwareMap);
 
-        chooChoo = new SimpleChooChooSystem(gamepad1, telemetry, hardwareMap);
+        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        while (opModeInInit()){
+        chooChoo = new NaviChooChooSystem(gamepad1, telemetry, hardwareMap);
+
+        while (opModeInInit()) {
+
             telemetry.addLine("Waiting For Start");
+            chooChoo.displayTelemetry();
             telemetry.update();
         }
 
-        while (opModeIsActive()){
-//            chassis.robotCentricDrive();
-//            chassis.updatePose();
+        runtime.reset();
+
+        while (opModeIsActive()) {
 
             chooChoo.controllerInput();
             chooChoo.setPositions();
 
-//            telemetry.addData("Pose Estimate", chassis.getPose());
-            telemetry.addData("loop time", runtime.seconds()-previousTime);
+            chooChoo.displayTelemetry();
+
+            telemetry.addData("Loop Time", runtime.seconds() - previousTime);
             telemetry.update();
 
             previousTime = runtime.seconds();

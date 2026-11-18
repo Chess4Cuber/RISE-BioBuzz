@@ -100,25 +100,15 @@ public class NaviChooChooSystem {
     }
 
 
-
     public void displayTelemetry() {
-
         telemetry.addData("Choo Choo State", chooChooState);
-
         telemetry.addData("Choo Choo Position", "%.1f deg", chooChoo.getAngleDegrees());
-
         telemetry.addData("Choo Choo Target", "%.1f deg", targetAngle);
-
         telemetry.addData("Choo Choo Error", "%.1f deg", chooChoo.getError(targetAngle));
-
         telemetry.addData("Choo Choo Encoder", "%.0f ticks", chooChoo.getEncoderTicks());
-
         telemetry.addData("Choo Choo At Target", chooChoo.isAtTarget(targetAngle));
-
         telemetry.addData("Choo Choo P", chooChoo.chooChooPID.P);
-
         telemetry.addData("Choo Choo I", chooChoo.chooChooPID.I);
-
         telemetry.addData("Choo Choo D", chooChoo.chooChooPID.D);
     }
 }
