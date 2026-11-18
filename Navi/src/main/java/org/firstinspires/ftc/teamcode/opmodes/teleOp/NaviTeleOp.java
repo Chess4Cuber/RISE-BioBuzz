@@ -56,6 +56,9 @@ public class NaviTeleOp extends LinearOpMode {
             chooChoo.controllerInput();
             chooChoo.setPositions();
 
+            flowerArm.setPositions();
+            flowerArm.controllerInput();
+
             gate.toggleClaw();
 
             telemetry.addData("Loop Time", runtime.seconds() - previousTime);
