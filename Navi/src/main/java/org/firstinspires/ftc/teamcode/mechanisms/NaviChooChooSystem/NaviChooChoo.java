@@ -19,7 +19,9 @@ public class NaviChooChoo extends PassiveIntake {
         super(1, new String[]{"chooChooMotor"}, 537.7, gamepad1, telemetry, hardwareMap);
 
         motors[0].setBreakMode();
-        chooChooPID = new PID_Controller(0.012, 0.0005, 0.7, 0.0);
+
+        //TODO: FIX PID FOR 223 RPM MOTOR
+        chooChooPID = new PID_Controller(0.014, 0.0005, 0.7, 0.0);
         chooChooPID.tolerance = ANGLE_TOLERANCE;
     }
 

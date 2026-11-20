@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.baseCode.hardware.claws.SingleServoClaw;
 import org.firstinspires.ftc.teamcode.mechanisms.NaviFlowerSystem.NaviFlowerArmSystem;
 import org.firstinspires.ftc.teamcode.mechanisms.NaviFlowerSystem.NaviFlowerStates;
 import org.firstinspires.ftc.teamcode.mechanisms.NaviGate;
@@ -37,7 +38,7 @@ public class NaviTeleOp extends LinearOpMode {
         gate = new NaviGate(gamepad1, hardwareMap);
 
         while (opModeInInit()) {
-            gate.openClaw();
+            gate.setClawState(SingleServoClaw.ClawState.OPEN);
 
             flowerArm.setFlowerState(NaviFlowerStates.INITIALIZED);
 

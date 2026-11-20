@@ -24,7 +24,7 @@ public class NaviChooChooSystem {
     private static final double LOOP_ANGLE =
             360.0 * ROTATION_DIRECTION;
 
-    private static final double MAX_POWER = 0.5;
+    private static final double MAX_POWER = 1;
 
     private double targetAngle = INITIAL_ANGLE;
 
