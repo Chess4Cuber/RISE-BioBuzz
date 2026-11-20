@@ -38,7 +38,7 @@ public class NaviTeleOp extends LinearOpMode {
         gate = new NaviGate(gamepad1, hardwareMap);
 
         while (opModeInInit()) {
-            gate.setClawState(SingleServoClaw.ClawState.OPEN);
+            gate.openClaw();
 
             flowerArm.setFlowerState(NaviFlowerStates.INITIALIZED);
 
