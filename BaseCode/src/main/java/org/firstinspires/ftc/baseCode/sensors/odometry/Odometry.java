@@ -5,15 +5,17 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.baseCode.math.Vector3D;
 
 public class Odometry {
-    public double[] pose = new double[3];  // made public so IMU can override pose[2]
+    double[] pose = new double[3];
 
     double x_pos = 0;
     double y_pos = 0;
-    public double heading = 0;             // made public so IMU can override heading
+    double heading = 0;
 
     double x_offset = 0;
     double y_offset = 0;
     double head_offset = 0;
+
+
 
     double[] previousEncoderPos = {0,0,0};
 
@@ -29,21 +31,21 @@ public class Odometry {
     public Odometry(String[] names, OdometryType odoType, double[] odoConstants, HardwareMap hardwareMap, double xOff, double yOff, double headOff){
         switch (odoType){
             case THREE_WHEEL:
-                leftEncoder   = new Encoder(names[0], odoConstants[0], odoConstants[1], hardwareMap);
-                rightEncoder  = new Encoder(names[1], odoConstants[0], odoConstants[1], hardwareMap);
+                leftEncoder = new Encoder(names[0], odoConstants[0], odoConstants[1], hardwareMap);
+                rightEncoder = new Encoder(names[1], odoConstants[0], odoConstants[1], hardwareMap);
                 middleEncoder = new Encoder(names[2], odoConstants[0], odoConstants[1], hardwareMap);
-                x_offset    = xOff;
-                y_offset    = yOff;
+                x_offset = xOff;
+                y_offset = yOff;
                 head_offset = headOff;
-                break;
 
+                break;
             case TWO_WHEEL:
-                leftEncoder   = new Encoder(names[0], odoConstants[0], odoConstants[1], hardwareMap);
+                leftEncoder = new Encoder(names[0], odoConstants[0], odoConstants[1], hardwareMap);
                 middleEncoder = new Encoder(names[2], odoConstants[0], odoConstants[1], hardwareMap);
                 break;
         }
 
-        this.odoType     = odoType;
+        this.odoType = odoType;
         this.odoConstants = odoConstants;
     }
 
@@ -51,28 +53,26 @@ public class Odometry {
         switch (odoType) {
             case THREE_WHEEL:
                 // Calculate encoder deltas in inches
-                double deltaLeftEncoderPos   = leftEncoder.getCurrPosInches()   - previousEncoderPos[0];
-                double deltaRightEncoderPos  = rightEncoder.getCurrPosInches()  - previousEncoderPos[1];
+                double deltaLeftEncoderPos = leftEncoder.getCurrPosInches() - previousEncoderPos[0];
+                double deltaRightEncoderPos = rightEncoder.getCurrPosInches() - previousEncoderPos[1];
                 double deltaMiddleEncoderPos = middleEncoder.getCurrPosInches() - previousEncoderPos[2];
 
-                // Change in robot orientation (radians) - used for X/Y integration only
-                // If IMU is active, MecanumChassis.updatePose() will overwrite heading after this
+                // Change in robot orientation (radians)
                 double phi = (deltaRightEncoderPos - deltaLeftEncoderPos) / odoConstants[2];
 
                 // Forward and lateral displacement in robot coordinates
                 double deltaParallel = (deltaLeftEncoderPos + deltaRightEncoderPos) / 2.0;
-                double deltaPerp     = deltaMiddleEncoderPos - (odoConstants[3] * phi);
+                double deltaPerp = deltaMiddleEncoderPos - (odoConstants[3] * phi);
 
-                // Integrate X/Y using current heading (will be IMU heading if IMU is active)
+
                 double deltaX = deltaParallel * Math.cos(heading) - deltaPerp * Math.sin(heading);
                 double deltaY = deltaParallel * Math.sin(heading) + deltaPerp * Math.cos(heading);
 
+                // Update pose
                 x_pos += deltaX;
                 y_pos += deltaY;
-
-                // Only update heading from encoders if IMU is NOT active
-                // If IMU is active, MecanumChassis overrides heading after this call
                 heading += phi;
+
                 heading = Math.atan2(Math.sin(heading), Math.cos(heading));
 
                 // Store current encoder positions for next loop
@@ -80,6 +80,7 @@ public class Odometry {
                 previousEncoderPos[1] = rightEncoder.getCurrPosInches();
                 previousEncoderPos[2] = middleEncoder.getCurrPosInches();
 
+                // Update output arrays
                 encoderReadings[0] = previousEncoderPos[0];
                 encoderReadings[1] = previousEncoderPos[1];
                 encoderReadings[2] = previousEncoderPos[2];
@@ -106,11 +107,9 @@ public class Odometry {
     public double getX() {
         return x_pos;
     }
-
     public double getY() {
         return y_pos;
     }
-
     public double getHeading() {
         return heading;
     }
@@ -120,8 +119,8 @@ public class Odometry {
     }
 
     public void setPose(double x, double y, double headingDeg) {
-        this.x_pos   = x;
-        this.y_pos   = y;
+        this.x_pos = x;
+        this.y_pos = y;
         this.heading = Math.toRadians(headingDeg);
 
         pose[0] = x;
@@ -134,4 +133,7 @@ public class Odometry {
         previousEncoderPos[1] = rightEncoder.getCurrPosInches();
         previousEncoderPos[2] = middleEncoder.getCurrPosInches();
     }
+
+
+
 }
