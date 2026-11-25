@@ -24,7 +24,7 @@ public class ChooChooTesting extends LinearOpMode {
         chooChoo = new NaviChooChooSystem(gamepad1, telemetry, hardwareMap);
 
         while (opModeInInit()) {
-
+            chooChoo.initializePosition();
             telemetry.addLine("Waiting For Start");
             chooChoo.displayTelemetry();
             telemetry.update();

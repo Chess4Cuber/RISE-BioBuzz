@@ -24,7 +24,7 @@ public class NaviChooChooSystem {
     private static final double LOOP_ANGLE =
             360.0 * ROTATION_DIRECTION;
 
-    private static final double MAX_POWER = 1;
+    private static final double MAX_POWER = .6;
 
     private double targetAngle = INITIAL_ANGLE;
 
@@ -37,12 +37,6 @@ public class NaviChooChooSystem {
 
         chooChooState = NaviChooChooStates.INITIALIZING;
     }
-
-//    public void update() {
-//        controllerInput();
-//        setPositions();
-//        displayTelemetry();
-//    }
 
     public void setPositions() {
 
@@ -80,7 +74,9 @@ public class NaviChooChooSystem {
                 break;
 
             case RESTING:
-                if ((gamepad1.b != lastToggleB) && gamepad1.b && chooChoo.isAtTarget(targetAngle)) {
+                // RESTING is only entered after reaching the 3/4 position, so B is always accepted here.
+                // targetAngle (not the measured angle) is advanced, so any drift never accumulates.
+                if ((gamepad1.b != lastToggleB) && gamepad1.b) {
 
                     targetAngle += LOOP_ANGLE;
                     chooChooState = NaviChooChooStates.ROTATING;
@@ -94,6 +90,17 @@ public class NaviChooChooSystem {
                 }
 
                 break;
+        }
+
+        lastToggleB = gamepad1.b;
+    }
+
+    public void initializePosition() {
+
+        chooChoo.setTargetAngle(targetAngle, MAX_POWER);
+
+        if (chooChoo.isAtTarget(targetAngle)) {
+            chooChooState = NaviChooChooStates.RESTING;
         }
 
         lastToggleB = gamepad1.b;
